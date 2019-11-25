@@ -6,8 +6,9 @@ namespace App\Models;
 
 class User
 {
-    public $first_name;
-    public $last_name;
+    private $first_name;
+    private $last_name;
+    private $_email;
 
     public function setFirstName($firstName)
     {
@@ -32,5 +33,15 @@ class User
     public function getFullName()
     {
         return sprintf('%s %s',$this->first_name, $this->last_name);
+    }
+
+    public function setEmail(string $email)
+    {
+        $this->_email = $email;
+    }
+
+    public function getEmail() : string
+    {
+        return $this->_email;
     }
 }

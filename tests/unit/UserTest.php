@@ -5,52 +5,62 @@ use App\Models\User;
 
 class UserTest extends TestCase
 {
+    private $_user;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->_user = new User();
+    }
 
     public function testWeCanGetFirstName()
     {
         // create User
-        $user = new User;
         // set First Name
         $_firstName = 'Hooman';
 
-        $user->setFirstName($_firstName);
+        $this->_user->setFirstName($_firstName);
         // test get first name
-        $this->assertEquals($user->getFirstName(),$_firstName);
+        $this->assertEquals($this->_user->getFirstName(),$_firstName);
     }
 
     public function testWeCanGetLastName()
     {
-        $user = new User;
         $_lastName = 'Doe';
-        $user->setLastName($_lastName);
-        $this->assertEquals($user->getLastName(),$_lastName);
+        $this->_user->setLastName($_lastName);
+        $this->assertEquals($this->_user->getLastName(),$_lastName);
     }
 
     public function testFullNameIsReturned()
     {
-        $user = new User;
         $_firstName = 'Hooman';
         $_lastName = 'Doe';
 
-        $user->setFirstName($_firstName);
-        $user->setLastName($_lastName);
+        $this->_user->setFirstName($_firstName);
+        $this->_user->setLastName($_lastName);
 
-        $this->assertEquals($user->getFullName(), sprintf('%s %s',$_firstName, $_lastName));
+        $this->assertEquals($this->_user->getFullName(), sprintf('%s %s',$_firstName, $_lastName));
 
 
     }
 
     public function testFirstAndLastNameIsTrimmed()
     {
-        $user = new User;
         $_firstName = ' Hooman';
         $_lastName = 'Doe ';
 
-        $user->setFirstName($_firstName);
-        $user->setLastName($_lastName);
+        $this->_user->setFirstName($_firstName);
+        $this->_user->setLastName($_lastName);
 
-        $this->assertEquals($user->getFirstName(), 'Hooman');
-        $this->assertEquals($user->getLastName(), 'Doe');
+        $this->assertEquals($this->_user->getFirstName(), 'Hooman');
+        $this->assertEquals($this->_user->getLastName(), 'Doe');
 
+    }
+
+    public function testEmailAddressCanBeSet()
+    {
+        $this->_user->setEmail('strong@gmail.com');
+
+        $this->assertEquals($this->_user->getEmail(),'strong@gmail.com');
     }
 }
