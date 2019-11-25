@@ -64,7 +64,10 @@ class UserTest extends TestCase
         $this->assertEquals($this->_user->getEmail(),'strong@gmail.com');
     }
 
-    public function testEmailVariablesContainCorrectValue()
+    /**
+     * @test
+     */
+    public function emailVariablesContainCorrectValue()
     {
         $_firstName = ' Hooman';
         $_lastName = 'Doe ';
