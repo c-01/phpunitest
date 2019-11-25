@@ -7,9 +7,8 @@ class UserTest extends TestCase
 {
     private $_user;
 
-    public function __construct()
+    public function setUp(): void
     {
-        parent::__construct();
         $this->_user = new User();
     }
 
