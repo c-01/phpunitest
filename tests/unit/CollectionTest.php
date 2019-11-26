@@ -93,4 +93,20 @@ class CollectionTest extends TestCase
         $this->assertCount(3, $collection->get());
 
     }
+    
+    /** @test */
+    public function return_json_encoded_items()
+    {
+        $collection = new \App\Support\Collection([
+            ['username' => 'alex'],
+            ['username' => 'storm']
+        ]);
+
+        $this->assertIsString('string', $collection->toJson());
+
+        $this->assertEquals(
+            '[{"username":"alex"},{"username":"storm"}]',
+            $collection->toJson()
+        );
+    }
 }
