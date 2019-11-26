@@ -109,4 +109,26 @@ class CollectionTest extends TestCase
             $collection->toJson()
         );
     }
+
+    /**
+     * @test
+     *
+     */
+    public function encoded_a_collection_object_return_json()
+    {
+        $collection = new \App\Support\Collection([
+            ['username' => 'alex'],
+            ['username' => 'storm']
+        ]);
+
+        $encoded = json_encode($collection);
+
+        $this->assertIsString('string', $encoded);
+
+        $this->assertEquals(
+            '[{"username":"alex"},{"username":"storm"}]',
+            $encoded
+        );
+    }
+
 }
