@@ -30,6 +30,16 @@ class Addition implements IOperation
         if (count($this->_operands) === 0) {
             throw new NoOperandsException;
         }
+
+//        $result = 0;
+//
+//        foreach ($this->_operands as $operand) {
+//            $result += $operand;
+//        }
+//
+//        return $result;
+
+
         return array_sum($this->_operands);
     }
 }
